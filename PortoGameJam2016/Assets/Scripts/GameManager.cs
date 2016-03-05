@@ -1,15 +1,50 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
+    public static GameManager Instance;
+    public Mode CurrentMode = Mode.TopDown;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    CameraController cameraController;
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        } else if (Instance != this)
+        {
+            Destroy(Instance.gameObject);
+            Instance = this;
+        }
+
+        cameraController = GetComponent<CameraController>();
+
+        if (CurrentMode == Mode.TopDown)
+        {
+            cameraController.SwitchToTopDown();
+
+            cameraController.RotateToSideScroller();
+        }
+        else
+        {
+            cameraController.SwitchToSideScroller();
+
+            cameraController.RotateToTopDown();
+        }
+    }
+
+    void Update()
+    {
+
+    }
+}
+
+public enum Mode
+{
+    SideScroller,
+    TopDown,
+    TransitioningToSideScroller,
+    TransitioningToTopDown
 }
