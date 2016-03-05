@@ -28,6 +28,7 @@ public class Twistable : MonoBehaviour {
                 break;
             case Mode.TopDown:
                 position.x += TopDowner.transform.localPosition.x;
+                position.y += TopDowner.transform.localPosition.y;
                 position.z += TopDowner.transform.localPosition.z;
                 transform.localPosition = position;
                 TopDowner.transform.localPosition = new Vector3(0, 0, 0);
@@ -50,16 +51,10 @@ public class Twistable : MonoBehaviour {
                     SideScroller.GetComponent<Rigidbody2D>().gravityScale = 0.0f;
                     SideScroller.GetComponent<Rigidbody2D>().isKinematic = true;
                 }
-                else
-                {
-                    SideScroller.GetComponent<Rigidbody2D>().gravityScale = 1.0f;
-                    SideScroller.GetComponent<Rigidbody2D>().isKinematic = false;
-                }
                 break;
             case Mode.TopDown:
                 SideScroller.gameObject.SetActive(false);
-                if (!IsGround)
-                    TopDowner.gameObject.SetActive(true);
+                TopDowner.gameObject.SetActive(true);
                 break;
         }
     }
