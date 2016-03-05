@@ -8,13 +8,13 @@ public class CameraController : MonoBehaviour
 
     public void SwitchToTopDown()
     {
-        transform.position = new Vector3(0, CameraDistance, 0);
+        transform.localPosition = new Vector3(0, CameraDistance, 0);
         transform.localRotation = Quaternion.Euler(90, 0, 0);
     }
 
     public void SwitchToSideScroller()
     {
-        transform.position = new Vector3(0, 0, -CameraDistance);
+        transform.localPosition = new Vector3(0, 0, -CameraDistance);
         transform.localRotation = Quaternion.Euler(0, 0, 0);
     }
 
@@ -54,14 +54,14 @@ public class CameraController : MonoBehaviour
 
             if (totalTime >= TransitionDuration)
             {
-                transform.RotateAround(Vector3.zero, Vector3.right, to - currentAngle);
+                transform.RotateAround(transform.parent.TransformPoint(Vector3.zero), Vector3.right, to - currentAngle);
 
                 GameManager.Instance.CurrentMode = targetMode;
                 yield break;
             }
             else
             {
-                transform.RotateAround(Vector3.zero, Vector3.right, diffAngle * Time.deltaTime / TransitionDuration);
+                transform.RotateAround(transform.parent.TransformPoint(Vector3.zero), Vector3.right, diffAngle * Time.deltaTime / TransitionDuration);
             }
 
             yield return null;
