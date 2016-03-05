@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour {
         CurrentScore += score;
     }
 
-    public void OnCollisionEnterChild()
+    public void OnEnemyKilled()
     {
         CurrentScore += 10;
     }

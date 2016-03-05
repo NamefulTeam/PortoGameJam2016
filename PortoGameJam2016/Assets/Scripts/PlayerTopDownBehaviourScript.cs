@@ -24,22 +24,4 @@ public class PlayerTopDownBehaviourScript : MonoBehaviour {
             
         }
     }
-    
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Enemy")
-        {
-           /* parentObject.GetComponent<PlayerController>().OnCollisionEnterChild();
-            Destroy(collision.gameObject, 0.1f);*/
-        }
-    }
-    
-    /*void OnCollisionExit(Collision collision)
-    {
-
-        if (collision.gameObject.tag == "Enemy")
-        {
-            
-        }
-    }*/
 }

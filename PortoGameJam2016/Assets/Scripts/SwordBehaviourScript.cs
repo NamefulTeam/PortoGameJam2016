@@ -54,7 +54,7 @@ public class SwordBehaviourScript : MonoBehaviour {
     {
         if (collider.gameObject.tag == "Enemy")
         {
-            parentObject.GetComponent<PlayerController>().OnCollisionEnterChild();
+            parentObject.GetComponent<PlayerController>().OnEnemyKilled();
             Destroy(collider.gameObject, 0.1f);
         }
     }
