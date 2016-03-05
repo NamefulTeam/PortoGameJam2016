@@ -8,15 +8,17 @@ public class Twistable : MonoBehaviour {
     public Transform TopDowner;
 
     public bool IsGround;
+    public bool RestoreOriginalY;
 
     public Mode State { get; private set; }
-
-    public event Action TransitionedToSideScrollerEvent;
-    public event Action TransitionedToTopDownEvent;
+    
+    float initialY;
 
     // Use this for initialization
     void Awake () {
         ObjectList.Instance.AddTwistable(this);
+
+        initialY = transform.position.y;
     }
 	
 	// Update is called once per frame
@@ -50,15 +52,42 @@ public class Twistable : MonoBehaviour {
             case Mode.SideScroller:
                 TopDowner.gameObject.SetActive(false);
                 SideScroller.gameObject.SetActive(true);
+                
+                var rb2d = SideScroller.GetComponent<Rigidbody2D>();
                 if (IsGround)
                 {
-                    SideScroller.GetComponent<Rigidbody2D>().gravityScale = 0.0f;
-                    SideScroller.GetComponent<Rigidbody2D>().isKinematic = true;
+                    rb2d.gravityScale = 0.0f;
+                    rb2d.isKinematic = true;
                 }
-                if (TransitionedToSideScrollerEvent != null)
+
+                if (!IsGround)
                 {
-                    TransitionedToSideScrollerEvent.Invoke();
+                    float newY = float.MinValue;
+                    foreach (var obj in ObjectList.Instance.TwistableObjects)
+                    {
+                        if (!obj.IsGround)
+                        {
+                            continue;
+                        }
+
+                        var objPosition = obj.transform.position;
+                        var objSize = obj.transform.localScale;
+
+                        if (objPosition.x + objSize.x / 2 > transform.position.x - transform.localScale.x / 2 &&
+                            objPosition.x - objSize.x / 2 < transform.position.x + transform.localScale.x / 2)
+                        {
+                            newY = Mathf.Max(newY, objPosition.y + transform.localScale.y / 2 - transform.localScale.y / 2 + 0.1f);
+                        }
+                    }
+                    
+                    transform.position = new Vector3(transform.position.x, newY, transform.position.z);
                 }
+
+                if (RestoreOriginalY)
+                {
+                    transform.position = new Vector3(transform.position.x, initialY, transform.position.z);
+                }
+
                 break;
             case Mode.TopDown:
                 SideScroller.gameObject.SetActive(false);
@@ -67,10 +96,6 @@ public class Twistable : MonoBehaviour {
                 {
                     TopDowner.GetComponent<Rigidbody>().useGravity = false;
                     TopDowner.GetComponent<Rigidbody>().isKinematic = true;
-                }
-                if (TransitionedToTopDownEvent != null)
-                {
-                    TransitionedToTopDownEvent.Invoke();
                 }
                 break;
         }
