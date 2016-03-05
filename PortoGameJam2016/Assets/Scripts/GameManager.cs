@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public Mode CurrentMode = Mode.TopDown;
+    public bool AllowTwisting = true;
 
     CameraController cameraController;
 
@@ -33,7 +34,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Twist"))
+        if (Input.GetButtonDown("Twist") && AllowTwisting)
         {
             if (CurrentMode == Mode.TopDown)
             {
