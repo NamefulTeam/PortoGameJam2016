@@ -50,12 +50,12 @@ public class SwordBehaviourScript : MonoBehaviour {
         }
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider collider)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collider.gameObject.tag == "Enemy")
         {
             parentObject.GetComponent<PlayerController>().OnCollisionEnterChild();
-            Destroy(collision.gameObject, 0.1f);
+            Destroy(collider.gameObject, 0.1f);
         }
     }
 }
