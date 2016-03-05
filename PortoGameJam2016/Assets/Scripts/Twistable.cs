@@ -51,6 +51,16 @@ public class Twistable : MonoBehaviour {
             case TwistState.SideScroll:
                 TopDowner.gameObject.SetActive(false);
                 SideScroller.gameObject.SetActive(true);
+                if (IsGround)
+                {
+                    SideScroller.GetComponent<Rigidbody2D>().gravityScale = 0.0f;
+                    SideScroller.GetComponent<Rigidbody2D>().isKinematic = true;
+                }
+                else
+                {
+                    SideScroller.GetComponent<Rigidbody2D>().gravityScale = 1.0f;
+                    SideScroller.GetComponent<Rigidbody2D>().isKinematic = false;
+                }
                 break;
             case TwistState.TopDown:
                 SideScroller.gameObject.SetActive(false);
