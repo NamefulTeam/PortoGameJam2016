@@ -124,6 +124,30 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 173748, guid: d3ed493c4a0371d48b365566b9608b5f, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 160450, guid: d3ed493c4a0371d48b365566b9608b5f, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 190702, guid: d3ed493c4a0371d48b365566b9608b5f, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 131252, guid: d3ed493c4a0371d48b365566b9608b5f, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 145292, guid: d3ed493c4a0371d48b365566b9608b5f, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 167576, guid: d3ed493c4a0371d48b365566b9608b5f, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d3ed493c4a0371d48b365566b9608b5f, type: 2}
   m_IsPrefabParent: 0
@@ -324,6 +348,42 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8aa346adde2771e41bad977360140e5b, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1648475033 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 186960, guid: 8aa346adde2771e41bad977360140e5b, type: 2}
+  m_PrefabInternal: {fileID: 1648475032}
+--- !u!1 &1648475034 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 174370, guid: 8aa346adde2771e41bad977360140e5b, type: 2}
+  m_PrefabInternal: {fileID: 1648475032}
+--- !u!114 &1648475035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1648475033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 234a5655c22836e45942ffc7196008ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  jumpSpeed: 200
+  isInSideScrollMode: 0
+--- !u!114 &1648475036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1648475034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 234a5655c22836e45942ffc7196008ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  jumpSpeed: 200
+  isInSideScrollMode: 1
 --- !u!1 &1935945298
 GameObject:
   m_ObjectHideFlags: 0
