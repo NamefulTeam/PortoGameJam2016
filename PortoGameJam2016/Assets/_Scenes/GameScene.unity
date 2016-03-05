@@ -683,8 +683,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 234a5655c22836e45942ffc7196008ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  jumpSpeed: 200
+  speed: 3
+  speedAir: 2.5
+  jumpSpeed: 10
+  maxSpeedGround: 10
+  maxSpeedAir: 5
+  horizontalDrag: 20
+  parentObject: {fileID: 0}
 --- !u!4 &1888058908 stripped
 Transform:
   m_PrefabParentObject: {fileID: 492592, guid: 0bf8c7ea9f1d4984f8ff6eddb9ed3412, type: 2}
