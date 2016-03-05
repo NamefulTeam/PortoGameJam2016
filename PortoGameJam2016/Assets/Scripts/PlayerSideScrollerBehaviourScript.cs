@@ -24,10 +24,28 @@ public class PlayerSideScrollerBehaviourScript : MonoBehaviour {
 
         if (GameManager.Instance.CurrentMode == Mode.SideScroller)
         {
-            
+            RaycastHit2D hit = Physics2D.Raycast(transform.position + Vector3.down * 0.501f, Vector2.down);
+            float distance = Mathf.Abs(hit.point.y - transform.position.y);
+            if (hit.rigidbody == null)
+            {
+                isGrounded = false;
+            }
+            else
+            {
+                Debug.DrawRay(transform.position + Vector3.down * 0.501f, Vector2.down * 50, Color.red);
+                if (distance <= 0.55)
+                {
+                    isGrounded = true;
+                }
+                else
+                {
+                    isGrounded = false;
+                }
+            }
+
             float translationX = Input.GetAxisRaw("Horizontal");
             float translationY = Input.GetAxisRaw("Vertical");
-  
+
             var currentVel = GetComponent<Rigidbody2D>().velocity;
 
             var vel = new Vector2(translationX, 0).normalized;
@@ -35,8 +53,9 @@ public class PlayerSideScrollerBehaviourScript : MonoBehaviour {
             if (translationY > 0 && isGrounded)
             {
                 jumpVel = jumpSpeed * Vector2.up;
+                isGrounded = false;
             }
-            
+
             if (isGrounded)
             {
                 GetComponent<Rigidbody2D>().drag = horizontalDrag;
@@ -45,7 +64,7 @@ public class PlayerSideScrollerBehaviourScript : MonoBehaviour {
             }
             else
             {
-                GetComponent<Rigidbody2D>().drag = 0.5f ;
+                GetComponent<Rigidbody2D>().drag = 0.5f;
                 maxSpeed = maxSpeedAir;
                 vel *= speedAir;
             }
@@ -59,10 +78,12 @@ public class PlayerSideScrollerBehaviourScript : MonoBehaviour {
     //consider when character is falling and touches the ground, it will enter collision.
     void OnCollisionEnter2D (Collision2D collision)
     {
+        /*
         if(collision.gameObject.tag == "Ground")
         {
             isGrounded = true;
         }
+        */
     }
 
     //consider when character is jumping .. it will exit collision.
@@ -71,7 +92,7 @@ public class PlayerSideScrollerBehaviourScript : MonoBehaviour {
 
         if (collision.gameObject.tag == "Ground")
         {
-            isGrounded = false;
+            //isGrounded = false;
         } else if (collision.gameObject.tag == "Enemy")
         {
             parentObject.GetComponent<PlayerController>().OnCollisionEnterChild();
