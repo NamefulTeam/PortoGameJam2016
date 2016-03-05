@@ -3,8 +3,9 @@ using System.Collections;
 
 public class CoinTopDownController : MonoBehaviour {
 
-    void OnTriggerEnter(Collider other)
+    void OnCollisionEnter(Collision collision)
     {
+        var other = collision.other;
         gameObject.GetComponentInParent<CoinController>().HandleCollision(other.gameObject);
     }
 }

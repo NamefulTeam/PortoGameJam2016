@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class Twistable : MonoBehaviour {
 
@@ -9,6 +10,9 @@ public class Twistable : MonoBehaviour {
     public bool IsGround;
 
     public Mode State { get; private set; }
+
+    public event Action TransitionedToSideScrollerEvent;
+    public event Action TransitionedToTopDownEvent;
 
     // Use this for initialization
     void Awake () {
@@ -51,10 +55,23 @@ public class Twistable : MonoBehaviour {
                     SideScroller.GetComponent<Rigidbody2D>().gravityScale = 0.0f;
                     SideScroller.GetComponent<Rigidbody2D>().isKinematic = true;
                 }
+                if (TransitionedToSideScrollerEvent != null)
+                {
+                    TransitionedToSideScrollerEvent.Invoke();
+                }
                 break;
             case Mode.TopDown:
                 SideScroller.gameObject.SetActive(false);
                 TopDowner.gameObject.SetActive(true);
+                if (IsGround)
+                {
+                    TopDowner.GetComponent<Rigidbody>().useGravity = false;
+                    TopDowner.GetComponent<Rigidbody>().isKinematic = true;
+                }
+                if (TransitionedToTopDownEvent != null)
+                {
+                    TransitionedToTopDownEvent.Invoke();
+                }
                 break;
         }
     }
