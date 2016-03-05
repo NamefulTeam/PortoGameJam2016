@@ -4,12 +4,7 @@ using System.Collections;
 public class PlayerTopDownBehaviourScript : MonoBehaviour {
 
     //settings for game
-    public float speed = 20.0F;
-    public float zMovement = 100.0f;
-
-    TopDownZPosition currentZPos = TopDownZPosition.Middle;
-    int lastTime = 10;
-    const int updateCounter = 50;
+    public float speed = 5.0F;
     
     void Start () {
         
@@ -22,16 +17,10 @@ public class PlayerTopDownBehaviourScript : MonoBehaviour {
             float translationX = Input.GetAxis("Horizontal");
             float translationZ = Input.GetAxis("Vertical");
 
-            if(GetComponent<Rigidbody>().velocity.magnitude < 15)
-                GetComponent<Rigidbody>().AddForce(new Vector3(translationX, 0, translationZ) * speed);
+            if (GetComponent<Rigidbody>().velocity.magnitude < 15) { 
+                GetComponent<Rigidbody>().velocity = new Vector3(translationX, 0, translationZ) * speed;
+        }
             
         }
     }
-}
-
-public enum TopDownZPosition
-{
-    Top,
-    Middle,
-    Down
 }
