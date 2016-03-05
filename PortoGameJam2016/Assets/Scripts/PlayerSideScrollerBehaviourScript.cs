@@ -1,15 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerBehaviourScript : MonoBehaviour {
+public class PlayerSideScrollerBehaviourScript : MonoBehaviour {
     //local variables
     bool isGrounded = true;
 
     //settings for game
     public float speed = 10.0F;
     public float jumpSpeed = 200.0f;
-
-    public bool isInSideScrollMode = true;
     
     void Start () {
 
@@ -17,7 +15,7 @@ public class PlayerBehaviourScript : MonoBehaviour {
 	
 	void FixedUpdate () {
 
-        if (isInSideScrollMode)
+        if (GameManager.Instance.CurrentMode == Mode.SideScroller)
         {
             float translationX = Input.GetAxis("Horizontal");
             float translationY = Input.GetAxis("Vertical");
@@ -29,15 +27,6 @@ public class PlayerBehaviourScript : MonoBehaviour {
                 GetComponent<Rigidbody2D>().AddForce(Vector3.up * jumpSpeed);
             }
 
-        } else
-        {
-         /*   float translationZ = Input.GetAxis("Horizontal") * speed;
-            float inputX = Input.GetAxis("Vertical");
-            float translationX = 0;
-            translationZ *= Time.deltaTime;
-            
-
-            transform.Translate(translationX, 0, translationZ);*/
         }
     }
 

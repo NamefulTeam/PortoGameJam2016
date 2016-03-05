@@ -345,6 +345,14 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a0ab56d8e59cf1348a7211966eb38d81, type: 2}
+    - target: {fileID: 5435770, guid: 8aa346adde2771e41bad977360140e5b, type: 2}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5034962, guid: 8aa346adde2771e41bad977360140e5b, type: 2}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8aa346adde2771e41bad977360140e5b, type: 2}
   m_IsPrefabParent: 0
@@ -364,12 +372,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1648475033}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 234a5655c22836e45942ffc7196008ec, type: 3}
+  m_Script: {fileID: 11500000, guid: 046efe8aa321df749acb3a50bda5ea9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  jumpSpeed: 200
-  isInSideScrollMode: 0
 --- !u!114 &1648475036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -383,7 +389,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   jumpSpeed: 200
-  isInSideScrollMode: 1
 --- !u!1 &1935945298
 GameObject:
   m_ObjectHideFlags: 0

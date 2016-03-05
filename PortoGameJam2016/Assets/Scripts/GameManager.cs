@@ -24,14 +24,10 @@ public class GameManager : MonoBehaviour
         if (CurrentMode == Mode.TopDown)
         {
             cameraController.SwitchToTopDown();
-
-            cameraController.RotateToSideScroller();
         }
         else
         {
             cameraController.SwitchToSideScroller();
-
-            cameraController.RotateToTopDown();
         }
     }
 

@@ -72,7 +72,8 @@
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\ObjectList.cs" />
-    <Compile Include="Assets\Scripts\PlayerBehaviourScript.cs" />
+    <Compile Include="Assets\Scripts\PlayerSideScrollerBehaviourScript.cs" />
+    <Compile Include="Assets\Scripts\PlayerTopDownBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\TransitionManager.cs" />
     <Compile Include="Assets\Scripts\Twistable.cs" />
   </ItemGroup>
