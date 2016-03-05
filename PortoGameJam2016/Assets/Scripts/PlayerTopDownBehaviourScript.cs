@@ -5,6 +5,7 @@ public class PlayerTopDownBehaviourScript : MonoBehaviour {
 
     //settings for game
     public float speed = 5.0F;
+    public GameObject parentObject;
     
     void Start () {
         
@@ -23,4 +24,22 @@ public class PlayerTopDownBehaviourScript : MonoBehaviour {
             
         }
     }
+    
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            parentObject.GetComponent<PlayerController>().OnCollisionEnterChild();
+            Destroy(collision.gameObject, 0.1f);
+        }
+    }
+    
+    /*void OnCollisionExit(Collision collision)
+    {
+
+        if (collision.gameObject.tag == "Enemy")
+        {
+            
+        }
+    }*/
 }

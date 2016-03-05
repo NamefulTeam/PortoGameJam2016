@@ -12,6 +12,7 @@ public class PlayerSideScrollerBehaviourScript : MonoBehaviour {
     public float maxSpeedGround = 10.0f;
     public float maxSpeedAir = 10.0f;
     public float horizontalDrag = 15f;
+    public GameObject parentObject;
 
     private float maxSpeed = 0;
 
@@ -71,6 +72,10 @@ public class PlayerSideScrollerBehaviourScript : MonoBehaviour {
         if (collision.gameObject.tag == "Ground")
         {
             isGrounded = false;
+        } else if (collision.gameObject.tag == "Enemy")
+        {
+            parentObject.GetComponent<PlayerController>().OnCollisionEnterChild();
+            Destroy(collision.gameObject, 0.1f);
         }
     }
 }
