@@ -12,7 +12,7 @@ public class TransitionManager : MonoBehaviour {
 
     void Start()
     {
-        Twist(Twistable.TwistState.TopDown);
+        Twist(Twistable.TwistState.SideScroll);
     }
 	
 	// Update is called once per frame
