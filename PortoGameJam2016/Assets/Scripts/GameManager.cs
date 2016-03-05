@@ -37,6 +37,18 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetButtonDown("Twist"))
+        {
+            if (CurrentMode == Mode.TopDown)
+            {
+                cameraController.RotateToSideScroller();
+                GetComponent<TransitionManager>().Twist(Mode.SideScroller);
+
+            } else if(CurrentMode == Mode.SideScroller) {
+                GetComponent<TransitionManager>().Twist(Mode.TopDown);
+                cameraController.RotateToTopDown();
+            }
+        }
 
     }
 }
