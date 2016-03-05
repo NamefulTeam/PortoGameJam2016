@@ -7,8 +7,14 @@ public class PlayerSideScrollerBehaviourScript : MonoBehaviour {
 
     //settings for game
     public float speed = 10.0F;
-    public float jumpSpeed = 200.0f;
-    
+    public float speedAir = 10.0F;
+    public float jumpSpeed = 10.0f;
+    public float maxSpeedGround = 10.0f;
+    public float maxSpeedAir = 10.0f;
+    public float horizontalDrag = 15f;
+
+    private float maxSpeed = 0;
+
     void Start () {
 
     }
@@ -17,16 +23,35 @@ public class PlayerSideScrollerBehaviourScript : MonoBehaviour {
 
         if (GameManager.Instance.CurrentMode == Mode.SideScroller)
         {
-            float translationX = Input.GetAxis("Horizontal");
-            float translationY = Input.GetAxis("Vertical");
+            
+            float translationX = Input.GetAxisRaw("Horizontal");
+            float translationY = Input.GetAxisRaw("Vertical");
+  
+            var currentVel = GetComponent<Rigidbody2D>().velocity;
 
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(translationX, 0) * speed);
-
+            var vel = new Vector2(translationX, 0).normalized;
+            Vector2 jumpVel = Vector2.zero;
             if (translationY > 0 && isGrounded)
             {
-                GetComponent<Rigidbody2D>().AddForce(Vector3.up * jumpSpeed);
+                jumpVel = jumpSpeed * Vector2.up;
             }
+            
+            if (isGrounded)
+            {
+                GetComponent<Rigidbody2D>().drag = horizontalDrag;
+                maxSpeed = maxSpeedGround;
+                vel *= speed;
+            }
+            else
+            {
+                GetComponent<Rigidbody2D>().drag = 0.5f ;
+                maxSpeed = maxSpeedAir;
+                vel *= speedAir;
+            }
+            currentVel += (jumpVel + vel);
+            currentVel.x = Mathf.Clamp(currentVel.x, -maxSpeed, maxSpeed);
 
+            GetComponent<Rigidbody2D>().velocity = currentVel;
         }
     }
 
