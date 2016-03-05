@@ -25,8 +25,6 @@ public class CoinController : MonoBehaviour {
 
     void OnEnterSideScrollerMode()
     {
-        Debug.Log("Coin in side scroller mode");
-
         transform.position = new Vector3(transform.position.x, initialY, transform.position.z);
     }
 }
