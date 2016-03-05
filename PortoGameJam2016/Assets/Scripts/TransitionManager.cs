@@ -9,6 +9,11 @@ public class TransitionManager : MonoBehaviour {
 	void Awake () {
         ObjectList = ObjectList.Instance;
     }
+
+    void Start()
+    {
+        Twist(Twistable.TwistState.TopDown);
+    }
 	
 	// Update is called once per frame
 	void Update () {

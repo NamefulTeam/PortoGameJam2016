@@ -6,7 +6,7 @@ public class ObjectList : MonoBehaviour {
 
     public List<Twistable> TwistableObjects;
 
-    private static ObjectList instance;
+    private static ObjectList instance = null;
     public static ObjectList Instance
     {
         get
@@ -26,18 +26,16 @@ public class ObjectList : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-        if (!Instance)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(this);
-        }
-	}
+        TwistableObjects = new List<Twistable>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
 	
 	}
+
+    public void AddTwistable(Twistable twistable)
+    {
+        TwistableObjects.Add(twistable);
+    }
 }

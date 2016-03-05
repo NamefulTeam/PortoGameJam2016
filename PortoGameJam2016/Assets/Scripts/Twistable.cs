@@ -17,25 +17,30 @@ public class Twistable : MonoBehaviour {
     public TwistState State { get; private set; }
 
     // Use this for initialization
-    void Start () {
-	
-	}
+    void Awake () {
+        ObjectList.Instance.AddTwistable(this);
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        Vector3 position = new Vector3();
+        Vector3 position = transform.localPosition;
         switch (State)
         {
             case TwistState.SideScroll:
-                position.x = SideScroller.transform.position.x;
-                position.y = SideScroller.transform.position.y;
+                position.x += SideScroller.transform.localPosition.x;
+                position.y += SideScroller.transform.localPosition.y;
+                transform.localPosition = position;
+                SideScroller.transform.localPosition = new Vector3(0, 0, -transform.localPosition.z);
                 break;
             case TwistState.TopDown:
-                position.x = TopDowner.transform.position.x;
-                position.z = TopDowner.transform.position.z;
+                position.x += TopDowner.transform.localPosition.x;
+                position.z += TopDowner.transform.localPosition.z;
+                transform.localPosition = position;
+                TopDowner.transform.localPosition = new Vector3(0, 0, 0);
                 break;
         }
-        transform.position = position;
+
+        
     }
 
     public void SwitchState(TwistState state)
@@ -49,9 +54,10 @@ public class Twistable : MonoBehaviour {
                 break;
             case TwistState.TopDown:
                 SideScroller.gameObject.SetActive(false);
-                if(!IsGround)
+                if (!IsGround)
                     TopDowner.gameObject.SetActive(true);
                 break;
         }
     }
+
 }
