@@ -8,13 +8,7 @@ public class Twistable : MonoBehaviour {
 
     public bool IsGround;
 
-    public enum TwistState
-    {
-        SideScroll,
-        TopDown
-    }
-
-    public TwistState State { get; private set; }
+    public Mode State { get; private set; }
 
     // Use this for initialization
     void Awake () {
@@ -26,13 +20,13 @@ public class Twistable : MonoBehaviour {
         Vector3 position = transform.localPosition;
         switch (State)
         {
-            case TwistState.SideScroll:
+            case Mode.SideScroller:
                 position.x += SideScroller.transform.localPosition.x;
                 position.y += SideScroller.transform.localPosition.y;
                 transform.localPosition = position;
                 SideScroller.transform.localPosition = new Vector3(0, 0, -transform.localPosition.z);
                 break;
-            case TwistState.TopDown:
+            case Mode.TopDown:
                 position.x += TopDowner.transform.localPosition.x;
                 position.z += TopDowner.transform.localPosition.z;
                 transform.localPosition = position;
@@ -43,12 +37,12 @@ public class Twistable : MonoBehaviour {
         
     }
 
-    public void SwitchState(TwistState state)
+    public void SwitchState(Mode state)
     {
         State = state;
         switch (state)
         {
-            case TwistState.SideScroll:
+            case Mode.SideScroller:
                 TopDowner.gameObject.SetActive(false);
                 SideScroller.gameObject.SetActive(true);
                 if (IsGround)
@@ -62,7 +56,7 @@ public class Twistable : MonoBehaviour {
                     SideScroller.GetComponent<Rigidbody2D>().isKinematic = false;
                 }
                 break;
-            case TwistState.TopDown:
+            case Mode.TopDown:
                 SideScroller.gameObject.SetActive(false);
                 if (!IsGround)
                     TopDowner.gameObject.SetActive(true);
