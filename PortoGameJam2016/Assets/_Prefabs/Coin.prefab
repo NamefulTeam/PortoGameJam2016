@@ -317,6 +317,7 @@ MonoBehaviour:
   SideScroller: {fileID: 447504}
   TopDowner: {fileID: 453250}
   IsGround: 0
+  RestoreOriginalY: 1
 --- !u!114 &11443836
 MonoBehaviour:
   m_ObjectHideFlags: 1

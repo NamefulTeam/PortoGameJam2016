@@ -8,15 +8,17 @@ public class Twistable : MonoBehaviour {
     public Transform TopDowner;
 
     public bool IsGround;
+    public bool RestoreOriginalY;
 
     public Mode State { get; private set; }
-
-    public event Action TransitionedToSideScrollerEvent;
-    public event Action TransitionedToTopDownEvent;
+    
+    float initialY;
 
     // Use this for initialization
     void Awake () {
         ObjectList.Instance.AddTwistable(this);
+
+        initialY = transform.position.y;
     }
 	
 	// Update is called once per frame
@@ -81,9 +83,9 @@ public class Twistable : MonoBehaviour {
                     transform.position = new Vector3(transform.position.x, newY, transform.position.z);
                 }
 
-                if (TransitionedToSideScrollerEvent != null)
+                if (RestoreOriginalY)
                 {
-                    TransitionedToSideScrollerEvent.Invoke();
+                    transform.position = new Vector3(transform.position.x, initialY, transform.position.z);
                 }
 
                 break;
@@ -94,10 +96,6 @@ public class Twistable : MonoBehaviour {
                 {
                     TopDowner.GetComponent<Rigidbody>().useGravity = false;
                     TopDowner.GetComponent<Rigidbody>().isKinematic = true;
-                }
-                if (TransitionedToTopDownEvent != null)
-                {
-                    TransitionedToTopDownEvent.Invoke();
                 }
                 break;
         }
