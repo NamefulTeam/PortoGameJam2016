@@ -132,7 +132,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169380}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: -23, y: 1, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 440948}
@@ -355,7 +355,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 197262}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 6c868ca87b6bcef4abf846ebcee34ddb, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
@@ -401,6 +401,7 @@ MonoBehaviour:
   SideScroller: {fileID: 440948}
   TopDowner: {fileID: 439018}
   IsGround: 0
+  RestoreOriginalY: 0
 --- !u!114 &11414418
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -413,6 +414,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentMode: 0
+  AllowTwisting: 1
 --- !u!114 &11442224
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -450,11 +452,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 234a5655c22836e45942ffc7196008ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  speedAir: 2.5
-  jumpSpeed: 10
-  maxSpeedGround: 10
-  maxSpeedAir: 5
+  speed: 2.5
+  speedAir: 1.5
+  jumpSpeed: 7.5
+  maxSpeedGround: 7.5
+  maxSpeedAir: 2.5
   horizontalDrag: 20
   parentObject: {fileID: 0}
 --- !u!114 &11472322
