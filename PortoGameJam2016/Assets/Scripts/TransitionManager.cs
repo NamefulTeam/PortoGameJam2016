@@ -3,11 +3,8 @@ using System.Collections;
 
 public class TransitionManager : MonoBehaviour {
 
-    public ObjectList ObjectList;
-
 	// Use this for initialization
 	void Start () {
-        ObjectList = ObjectList.Instance;
         Twist(GameManager.Instance.CurrentMode);
     }
 
@@ -17,7 +14,7 @@ public class TransitionManager : MonoBehaviour {
 
     public void Twist(Mode mode)
     {
-        foreach(var obj in ObjectList.TwistableObjects)
+        foreach(var obj in ObjectList.Instance.TwistableObjects)
         {
             obj.SwitchState(mode);
         }
