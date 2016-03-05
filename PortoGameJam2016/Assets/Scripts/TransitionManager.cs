@@ -6,24 +6,21 @@ public class TransitionManager : MonoBehaviour {
     public ObjectList ObjectList;
 
 	// Use this for initialization
-	void Awake () {
+	void Start () {
         ObjectList = ObjectList.Instance;
+
+        Twist(GameManager.Instance.CurrentMode);
     }
 
-    void Start()
-    {
-        Twist(Twistable.TwistState.TopDown);
-    }
-	
 	// Update is called once per frame
 	void Update () {
     }
 
-    public void Twist(Twistable.TwistState state)
+    public void Twist(Mode mode)
     {
         foreach(var obj in ObjectList.TwistableObjects)
         {
-            obj.SwitchState(state);
+            obj.SwitchState(mode);
         }
     }
 }
