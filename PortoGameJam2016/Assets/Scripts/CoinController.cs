@@ -6,7 +6,7 @@ public class CoinController : MonoBehaviour {
     Twistable twistable;
     float initialY;
 
-    void Start()
+    void Awake()
     {
         twistable = GetComponent<Twistable>();
 
