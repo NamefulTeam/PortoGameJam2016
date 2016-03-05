@@ -453,10 +453,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2.5
-  speedAir: 1.5
+  speedAir: 0.5
   jumpSpeed: 7.5
-  maxSpeedGround: 7.5
-  maxSpeedAir: 2.5
+  maxSpeedGround: 6
+  maxSpeedAir: 6
   horizontalDrag: 20
   parentObject: {fileID: 0}
 --- !u!114 &11472322
