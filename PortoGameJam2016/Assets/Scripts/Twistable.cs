@@ -86,7 +86,6 @@ public class Twistable : MonoBehaviour {
                         }
                     }
 
-                    Debug.Log(gameObject.transform.root.gameObject.name + "@" + transform.position + ": " + newY);
                     transform.position = new Vector3(transform.position.x, newY, transform.position.z);
                 }
 
