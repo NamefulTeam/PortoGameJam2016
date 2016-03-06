@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class EnemyAI : MonoBehaviour {
-
+    
     public Transform Target;
     public float TargetDist;
     public bool WillChase;
@@ -18,7 +18,7 @@ public class EnemyAI : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-	
+        
 	}
 	
 	// Update is called once per frame
@@ -85,4 +85,9 @@ public class EnemyAI : MonoBehaviour {
         }
 	
 	}
+
+    public void OnPlayerAttack()
+    {
+        Target.gameObject.GetComponent<PlayerController>().attacked();
+    }
 }

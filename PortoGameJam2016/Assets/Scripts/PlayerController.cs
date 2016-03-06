@@ -14,8 +14,15 @@ public class PlayerController : MonoBehaviour {
         ScoreText.text = CurrentScore.ToString();
     }
 
-    public void OnCollisionEnterChild()
+    public void OnEnemyKilled()
     {
         CurrentScore += 10;
+        Debug.Log("Enemy Killed!!");
+    }
+
+    public void attacked()
+    {
+        lifes -= 1;
+        Debug.Log("I was attacked!!");
     }
 }

@@ -98,10 +98,6 @@ public class PlayerSideScrollerBehaviourScript : MonoBehaviour {
         if (collision.gameObject.tag == "Ground")
         {
             //isGrounded = false;
-        } else if (collision.gameObject.tag == "Enemy")
-        {
-            parentObject.GetComponent<PlayerController>().OnCollisionEnterChild();
-            Destroy(collision.gameObject, 0.1f);
-        }
+        } 
     }
 }

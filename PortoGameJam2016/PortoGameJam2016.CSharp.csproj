@@ -68,11 +68,14 @@
     <Compile Include="Assets\Scripts\CoinSideScrollerController.cs" />
     <Compile Include="Assets\Scripts\CoinTopDownController.cs" />
     <Compile Include="Assets\Scripts\EnemyAI.cs" />
+    <Compile Include="Assets\Scripts\EnemySideScrollerBehaviourScript.cs" />
+    <Compile Include="Assets\Scripts\EnemyTopDownBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\ExitController.cs" />
     <Compile Include="Assets\Scripts\ExitSideScrollerController.cs" />
     <Compile Include="Assets\Scripts\ExitTopDownController.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\ObjectList.cs" />
+    <Compile Include="Assets\Scripts\Oscillator.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\PlayerSideScrollerBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\PlayerTopDownBehaviourScript.cs" />
