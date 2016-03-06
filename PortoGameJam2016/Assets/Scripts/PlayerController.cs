@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
+using UnityEngine.SceneManagement;
 using System.Linq;
 
 public class PlayerController : MonoBehaviour {
@@ -52,7 +54,7 @@ public class PlayerController : MonoBehaviour {
     public void OnEnemyKilled()
     {
         CurrentScore += 10;
-        Debug.Log("Enemy Killed!!");
+        
     }
 
     public void attacked()
@@ -62,5 +64,14 @@ public class PlayerController : MonoBehaviour {
         lifes -= 1;
         HealthText.text = lifes.ToString();
         Debug.Log("I was attacked!!");
+        if (lifes == 0)
+        {
+            if (GameManager.Instance.CurrentMode == Mode.SideScroller)
+                SceneManager.LoadScene("GameOverSideScroll");
+            else
+            {
+                SceneManager.LoadScene("GameOverTopDown");
+            }
+        }
     }
 }
