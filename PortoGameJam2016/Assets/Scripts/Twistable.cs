@@ -82,10 +82,11 @@ public class Twistable : MonoBehaviour {
                         if (objPosition.x + objSize.x / 2 > transform.position.x - transform.localScale.x / 2 &&
                             objPosition.x - objSize.x / 2 < transform.position.x + transform.localScale.x / 2)
                         {
-                            newY = Mathf.Max(newY, objPosition.y + transform.localScale.y / 2 - transform.localScale.y / 2 + 0.1f);
+                            newY = Mathf.Max(newY, objPosition.y + objSize.y / 2 - transform.localScale.y / 2 + 0.1f);
                         }
                     }
-                    
+
+                    Debug.Log(gameObject.transform.root.gameObject.name + "@" + transform.position + ": " + newY);
                     transform.position = new Vector3(transform.position.x, newY, transform.position.z);
                 }
 
