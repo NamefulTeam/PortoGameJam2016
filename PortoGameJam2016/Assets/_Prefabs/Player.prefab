@@ -549,6 +549,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentScore: 0
   lifes: 5
+  ScoreText: {fileID: 0}
 --- !u!114 &11459802
 MonoBehaviour:
   m_ObjectHideFlags: 1
