@@ -33,6 +33,6 @@ public class BeginningSceneScript : MonoBehaviour {
         fadingSeconds = GetComponent<FadingScript>().BeginFade(-1);
         yield return new WaitForSeconds(fadingSeconds);
 
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("MainMenu");
     }
 }
