@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
@@ -43,12 +44,20 @@ public class PlayerController : MonoBehaviour {
     public void OnEnemyKilled()
     {
         CurrentScore += 10;
-        Debug.Log("Enemy Killed!!");
+        
     }
 
     public void attacked()
     {
         lifes -= 1;
-        Debug.Log("I was attacked!!");
+        if(lifes == 0)
+        {
+            if (GameManager.Instance.CurrentMode == Mode.SideScroller)
+                SceneManager.LoadScene("GameOverSideScroll");
+            else
+            {
+                SceneManager.LoadScene("GameOverTopDown");
+            }
+        }
     }
 }
