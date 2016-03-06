@@ -19,9 +19,28 @@ public class PlayerTopDownBehaviourScript : MonoBehaviour {
             float translationZ = Input.GetAxis("Vertical");
 
             if (GetComponent<Rigidbody>().velocity.magnitude < 15) { 
-                GetComponent<Rigidbody>().velocity = new Vector3(translationX, 0, translationZ) * speed;
-        }
-            
+                GetComponent<Rigidbody>().velocity = new Vector3(translationX, GetComponent<Rigidbody>().velocity.y, translationZ) * speed;
+            }
+            Debug.DrawRay(transform.position, Vector3.down, Color.red);
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, Vector3.down, out hit))
+            {
+                float dist = Vector3.Distance(hit.point, transform.position);
+                if (dist > 0.5)
+                {
+                    GetComponent<Rigidbody>().drag = 0;
+                }
+                else
+                {
+                    GetComponent<Rigidbody>().drag = 10;
+                }
+            }
+            else
+            {
+                GetComponent<Rigidbody>().drag = 0;
+            }
+
+
         }
     }
     
