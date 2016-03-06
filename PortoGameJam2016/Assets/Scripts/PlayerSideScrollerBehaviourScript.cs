@@ -12,7 +12,6 @@ public class PlayerSideScrollerBehaviourScript : MonoBehaviour {
     public float maxSpeedGround = 10.0f;
     public float maxSpeedAir = 10.0f;
     public float horizontalDrag = 15f;
-    public GameObject parentObject;
 
     private float maxSpeed = 0;
 
@@ -59,6 +58,8 @@ public class PlayerSideScrollerBehaviourScript : MonoBehaviour {
                 jumpVel = jumpSpeed * Vector2.up;
                 isGrounded = false;
                 jumpCooldown = 0.25f;
+
+                GetComponent<AudioSource>().Play();
             }
 
             if (isGrounded)

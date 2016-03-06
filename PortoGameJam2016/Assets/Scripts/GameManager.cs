@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetButtonDown("Twist") && AllowTwisting)
         {
+            GetComponent<AudioSource>().Play();
+
             if (CurrentMode == Mode.TopDown)
             {
                 cameraController.RotateToSideScroller(() => { });

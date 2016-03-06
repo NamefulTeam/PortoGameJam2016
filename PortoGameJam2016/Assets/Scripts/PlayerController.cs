@@ -36,6 +36,8 @@ public class PlayerController : MonoBehaviour {
 
     public void AddScore(int score)
     {
+        GetComponent<AudioSource>().Play();
+
         CurrentScore += score;
         ScoreText.text = CurrentScore.ToString();
     }
