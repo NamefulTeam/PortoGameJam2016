@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class CameraController : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class CameraController : MonoBehaviour
         transform.localRotation = Quaternion.Euler(0, 0, 0);
     }
 
-    public void RotateToSideScroller()
+    public void RotateToSideScroller(Action callback)
     {
         GameManager.Instance.CurrentMode = Mode.TransitioningToSideScroller;
 
@@ -27,17 +28,17 @@ public class CameraController : MonoBehaviour
         {
             currentAngle = 360 - currentAngle;
         }
-        StartCoroutine(DoRotation(currentAngle, 0, Mode.SideScroller));
+        StartCoroutine(DoRotation(currentAngle, 0, () => { GameManager.Instance.CurrentMode = Mode.SideScroller; callback(); }));
     }
 
-    public void RotateToTopDown()
+    public void RotateToTopDown(Action callback)
     {
         GameManager.Instance.CurrentMode = Mode.TransitioningToTopDown;
 
-        StartCoroutine(DoRotation(transform.localEulerAngles.x, 90, Mode.TopDown));
+        StartCoroutine(DoRotation(transform.localEulerAngles.x, 90, () => { GameManager.Instance.CurrentMode = Mode.TopDown; callback(); }));
     }
 
-    IEnumerator DoRotation(float from, float to, Mode targetMode)
+    IEnumerator DoRotation(float from, float to, Action callback)
     {
         var diffAngle = to - from;
         var totalTime = 0f;
@@ -56,7 +57,7 @@ public class CameraController : MonoBehaviour
             {
                 transform.RotateAround(transform.parent.TransformPoint(Vector3.zero), Vector3.right, to - currentAngle);
 
-                GameManager.Instance.CurrentMode = targetMode;
+                callback();
                 yield break;
             }
             else

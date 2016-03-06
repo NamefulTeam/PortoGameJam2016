@@ -16,11 +16,15 @@ public class PlayerSideScrollerBehaviourScript : MonoBehaviour {
 
     private float maxSpeed = 0;
 
+    private float jumpCooldown = 0.5f;
+
     void Start () {
 
     }
 	
 	void FixedUpdate () {
+
+        jumpCooldown = Mathf.Max(jumpCooldown - Time.fixedDeltaTime, 0);
 
         if (GameManager.Instance.CurrentMode == Mode.SideScroller)
         {
@@ -50,10 +54,11 @@ public class PlayerSideScrollerBehaviourScript : MonoBehaviour {
 
             var vel = new Vector2(translationX, 0).normalized;
             Vector2 jumpVel = Vector2.zero;
-            if (translationY > 0 && isGrounded)
+            if (translationY > 0 && isGrounded && jumpCooldown <= float.Epsilon)
             {
                 jumpVel = jumpSpeed * Vector2.up;
                 isGrounded = false;
+                jumpCooldown = 0.25f;
             }
 
             if (isGrounded)

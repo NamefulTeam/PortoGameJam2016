@@ -38,12 +38,11 @@ public class GameManager : MonoBehaviour
         {
             if (CurrentMode == Mode.TopDown)
             {
-                cameraController.RotateToSideScroller();
+                cameraController.RotateToSideScroller(() => { });
                 GetComponent<TransitionManager>().Twist(Mode.SideScroller);
 
             } else if(CurrentMode == Mode.SideScroller) {
-                GetComponent<TransitionManager>().Twist(Mode.TopDown);
-                cameraController.RotateToTopDown();
+                cameraController.RotateToTopDown(() => GetComponent<TransitionManager>().Twist(Mode.TopDown));
             }
         }
 
