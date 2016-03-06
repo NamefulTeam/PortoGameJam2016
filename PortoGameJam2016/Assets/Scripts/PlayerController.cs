@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour {
         lifes -= 1;
         HealthText.text = lifes.ToString();
         Debug.Log("I was attacked!!");
-        if (lifes == 0)
+        if (lifes <= 0)
         {
             if (GameManager.Instance.CurrentMode == Mode.SideScroller)
                 SceneManager.LoadScene("GameOverSideScroll");
