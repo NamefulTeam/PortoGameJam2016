@@ -15,7 +15,7 @@ public class EnemyTopDownBehaviourScript : MonoBehaviour {
 
     void OnCollisionEnter(Collision collision)
     {
-        if (GetComponentInParent<EnemyAI>() == null)
+        if (GetComponentInParent<EnemyAI>() == null || GetComponentInParent<EnemyAI>().Target.gameObject.GetComponent<PlayerController>().isAttacking())
         {
             return;
         }

@@ -15,7 +15,7 @@ public class EnemySideScrollerBehaviourScript : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (GetComponentInParent<EnemyAI>() == null)
+        if (GetComponentInParent<EnemyAI>() == null || collision.contacts[0].normal == Vector2.down)
         {
             return;
         }
