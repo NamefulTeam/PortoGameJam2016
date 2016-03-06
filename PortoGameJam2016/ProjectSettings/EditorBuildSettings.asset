@@ -9,3 +9,7 @@ EditorBuildSettings:
     path: Assets/_Scenes/Level1.unity
   - enabled: 1
     path: Assets/_Scenes/VictoryScene.unity
+  - enabled: 1
+    path: Assets/_Scenes/GameOverSideScroll.unity
+  - enabled: 1
+    path: Assets/_Scenes/GameOverTopDown.unity
