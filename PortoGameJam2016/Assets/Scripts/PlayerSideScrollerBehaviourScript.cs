@@ -83,21 +83,26 @@ public class PlayerSideScrollerBehaviourScript : MonoBehaviour {
     //consider when character is falling and touches the ground, it will enter collision.
     void OnCollisionEnter2D (Collision2D collision)
     {
-        /*
-        if(collision.gameObject.tag == "Ground")
+        
+        if(collision.gameObject.tag == "Enemy")
         {
-            isGrounded = true;
+            if (collision.contacts[0].normal == Vector2.up)
+            {
+                GetComponentInParent<PlayerController>().OnEnemyKilled();
+                if (collision.gameObject.name == "SideScroller" || collision.gameObject.name == "TopDown")
+                    Destroy(collision.transform.parent.gameObject, 0.1f);
+                else
+                {
+                    Destroy(collision.gameObject, 0.1f);
+                }
+            }
         }
-        */
+        
     }
 
     //consider when character is jumping .. it will exit collision.
     void OnCollisionExit2D(Collision2D collision)
     {
-
-        if (collision.gameObject.tag == "Ground")
-        {
-            //isGrounded = false;
-        } 
+        
     }
 }

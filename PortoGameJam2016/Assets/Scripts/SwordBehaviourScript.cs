@@ -19,7 +19,7 @@ public class SwordBehaviourScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (GameManager.Instance.CurrentMode == Mode.TopDown && Input.GetKeyDown(KeyCode.Space) && !isAnimationOccurring)
+        if (GameManager.Instance.CurrentMode == Mode.TopDown && GetComponentInParent<PlayerController>().isAttacking() && !isAnimationOccurring)
         {
             isAnimationOccurring = true;
             oldPosition = transform.eulerAngles;
@@ -28,7 +28,7 @@ public class SwordBehaviourScript : MonoBehaviour {
         if (isAnimationOccurring) {
             if (timeForSlerp <= 1.0f)
             {
-                timeForSlerp += 2f * Time.deltaTime;
+                timeForSlerp += 10f * Time.deltaTime;
 
                 if (state == SwordState.SwordLeft)
                 {
@@ -46,6 +46,8 @@ public class SwordBehaviourScript : MonoBehaviour {
                 timeForSlerp = 0f;
                 state = state == SwordState.SwordLeft ? SwordState.SwordRight : SwordState.SwordLeft;
                 isAnimationOccurring = false;
+                GetComponentInParent<PlayerController>().stoppedAttacking();
+                transform.gameObject.SetActive(false);
             }
         }
     }
