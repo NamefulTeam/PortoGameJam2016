@@ -27,17 +27,23 @@ public class Twistable : MonoBehaviour {
         switch (State)
         {
             case Mode.SideScroller:
-                position.x += SideScroller.transform.localPosition.x;
-                position.y += SideScroller.transform.localPosition.y;
-                transform.localPosition = position;
-                SideScroller.transform.localPosition = new Vector3(0, 0, -transform.localPosition.z);
+                if (SideScroller != null)
+                {
+                    position.x += SideScroller.transform.localPosition.x;
+                    position.y += SideScroller.transform.localPosition.y;
+                    transform.localPosition = position;
+                    SideScroller.transform.localPosition = new Vector3(0, 0, -transform.localPosition.z);
+                }
                 break;
             case Mode.TopDown:
-                position.x += TopDowner.transform.localPosition.x;
-                position.y += TopDowner.transform.localPosition.y;
-                position.z += TopDowner.transform.localPosition.z;
-                transform.localPosition = position;
-                TopDowner.transform.localPosition = new Vector3(0, 0, 0);
+                if (TopDowner != null)
+                {
+                    position.x += TopDowner.transform.localPosition.x;
+                    position.y += TopDowner.transform.localPosition.y;
+                    position.z += TopDowner.transform.localPosition.z;
+                    transform.localPosition = position;
+                    TopDowner.transform.localPosition = new Vector3(0, 0, 0);
+                }
                 break;
         }
 

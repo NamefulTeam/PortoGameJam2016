@@ -2,9 +2,8 @@
 using System.Collections;
 
 public class EnemyAI : MonoBehaviour {
-
-    public GameObject Player;
-    Transform Target;
+    
+    public Transform Target;
     public float TargetDist;
     public bool WillChase;
     public float WalkingSpeed;
@@ -19,7 +18,7 @@ public class EnemyAI : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        Target = Player.transform;
+        
 	}
 	
 	// Update is called once per frame
@@ -87,11 +86,8 @@ public class EnemyAI : MonoBehaviour {
 	
 	}
 
-    void OnCollisionEnter(Collision collision)
+    public void OnPlayerAttack()
     {
-        if (collision.gameObject.name == Player.name)
-        {
-
-        }
+        Target.gameObject.GetComponent<PlayerController>().attacked();
     }
 }

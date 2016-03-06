@@ -74,6 +74,8 @@
     <Compile Include="Assets\Scripts\CoinSideScrollerController.cs" />
     <Compile Include="Assets\Scripts\CoinTopDownController.cs" />
     <Compile Include="Assets\Scripts\EnemyAI.cs" />
+    <Compile Include="Assets\Scripts\EnemySideScrollerBehaviourScript.cs" />
+    <Compile Include="Assets\Scripts\EnemyTopDownBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\ExitController.cs" />
     <Compile Include="Assets\Scripts\ExitSideScrollerController.cs" />
     <Compile Include="Assets\Scripts\ExitTopDownController.cs" />

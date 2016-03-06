@@ -55,7 +55,12 @@ public class SwordBehaviourScript : MonoBehaviour {
         if (collider.gameObject.tag == "Enemy")
         {
             parentObject.GetComponent<PlayerController>().OnEnemyKilled();
-            Destroy(collider.gameObject, 0.1f);
+            if (collider.gameObject.name == "SideScroller" || collider.gameObject.name == "TopDown")
+                Destroy(collider.transform.parent.gameObject, 0.1f);
+            else
+            {
+                Destroy(collider.gameObject, 0.1f);
+            }
         }
     }
 }
