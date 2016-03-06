@@ -19,7 +19,7 @@ public class BeginningSceneScript : MonoBehaviour {
 
     IEnumerator FadeStuff()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         float fadingSeconds = GetComponent<FadingScript>().BeginFade(1);
         yield return new WaitForSeconds(fadingSeconds);
         Text.text = "An Hypothetically Award Winning Game";
@@ -29,9 +29,11 @@ public class BeginningSceneScript : MonoBehaviour {
         yield return new WaitForSeconds(1f);
         fadingSeconds = GetComponent<FadingScript>().BeginFade(1);
         yield return new WaitForSeconds(fadingSeconds);
-        Text.text = "TWISTING POWER";
+        Text.text = "TWIRIO";
+        
         fadingSeconds = GetComponent<FadingScript>().BeginFade(-1);
         yield return new WaitForSeconds(fadingSeconds);
+        yield return new WaitForSeconds(2f);
 
         SceneManager.LoadScene("MainMenu");
     }
