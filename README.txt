@@ -18,3 +18,8 @@ Q: Change The World
 
 Gamepad:
 Use B instead of Space, X instead of Q.
+
+Made by:
+Afonso Rosa
+João Ponte
+Luís Reis
