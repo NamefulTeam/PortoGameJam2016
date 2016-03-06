@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
+using System.Linq;
 
 public class PlayerController : MonoBehaviour {
 
@@ -19,9 +19,16 @@ public class PlayerController : MonoBehaviour {
         }
         else if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button1))
         {
+            PlayHitSound();
             transform.FindChild("Medieval Sword").transform.gameObject.SetActive(true);
             attacking = true;
         }
+    }
+
+    private void PlayHitSound()
+    {
+        gameObject.GetComponent<AudioSource>()
+                        .Play();
     }
 
     public bool isAttacking()
@@ -50,6 +57,8 @@ public class PlayerController : MonoBehaviour {
 
     public void attacked()
     {
+        PlayHitSound();
+
         lifes -= 1;
         HealthText.text = lifes.ToString();
         Debug.Log("I was attacked!!");
