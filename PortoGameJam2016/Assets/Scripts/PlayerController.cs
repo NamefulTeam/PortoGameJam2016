@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour {
         {
             transform.FindChild("Medieval Sword").transform.gameObject.SetActive(false);
         }
-        else if(Input.GetKeyDown(KeyCode.Space))
+        else if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button1))
         {
             transform.FindChild("Medieval Sword").transform.gameObject.SetActive(true);
             attacking = true;
