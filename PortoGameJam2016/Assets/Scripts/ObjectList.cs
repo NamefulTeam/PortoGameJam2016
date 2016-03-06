@@ -38,4 +38,9 @@ public class ObjectList : MonoBehaviour {
     {
         TwistableObjects.Add(twistable);
     }
+
+    public void RemoveTwistable(Twistable twistable)
+    {
+        TwistableObjects.Remove(twistable);
+    }
 }

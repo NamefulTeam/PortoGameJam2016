@@ -108,4 +108,9 @@ public class Twistable : MonoBehaviour {
         }
     }
 
+    void OnDestroy()
+    {
+        ObjectList.Instance.RemoveTwistable(this);
+    }
+
 }
