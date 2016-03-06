@@ -20,7 +20,6 @@ public class PlayerController : MonoBehaviour {
         {
             transform.FindChild("Medieval Sword").transform.gameObject.SetActive(true);
             attacking = true;
-            UnityEditor.AssetDatabase.Refresh();
         }
     }
 
