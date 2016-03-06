@@ -60,6 +60,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 499140}
   - 114: {fileID: 11462388}
+  - 114: {fileID: 11488070}
   m_Layer: 0
   m_Name: Cubic Shape
   m_TagString: Untagged
@@ -343,6 +344,19 @@ MonoBehaviour:
   TopDowner: {fileID: 401174}
   IsGround: 0
   RestoreOriginalY: 1
+--- !u!114 &11488070
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 157450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 296182bb8afed8242ae3825af4b9ed2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OscillationAmplitude: 0.2
+  OscillationFrequency: 0.5
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
