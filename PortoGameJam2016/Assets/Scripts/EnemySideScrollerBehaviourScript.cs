@@ -13,7 +13,7 @@ public class EnemySideScrollerBehaviourScript : MonoBehaviour {
 	
 	}
 
-    void OnCollision2DEnter(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         if (GetComponentInParent<EnemyAI>() == null)
         {
