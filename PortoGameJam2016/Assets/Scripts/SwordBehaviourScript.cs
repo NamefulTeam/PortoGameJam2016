@@ -32,12 +32,12 @@ public class SwordBehaviourScript : MonoBehaviour {
 
                 if (state == SwordState.SwordLeft)
                 {
-                    Vector3 newRotation = new Vector3(transform.eulerAngles.x, 360 + 45, transform.eulerAngles.z);
+                    Vector3 newRotation = new Vector3(transform.eulerAngles.x, 90 + 45, transform.eulerAngles.z);
                     transform.eulerAngles = Vector3.Lerp(oldPosition, newRotation, timeForSlerp);
                 }
                 else
                 {
-                    Vector3 newRotation = new Vector3(transform.eulerAngles.x, -45, transform.eulerAngles.z);
+                    Vector3 newRotation = new Vector3(transform.eulerAngles.x, 90 - 45, transform.eulerAngles.z);
                     transform.eulerAngles = Vector3.Lerp(oldPosition, newRotation, timeForSlerp);
                 }
             }
