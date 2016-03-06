@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
     public int CurrentScore = 0;
     public int lifes = 5;
     public Text ScoreText;
+    public Text HealthText;
 
     bool attacking = false;
 
@@ -48,6 +49,7 @@ public class PlayerController : MonoBehaviour {
     public void attacked()
     {
         lifes -= 1;
+        HealthText.text = lifes.ToString();
         Debug.Log("I was attacked!!");
     }
 }
