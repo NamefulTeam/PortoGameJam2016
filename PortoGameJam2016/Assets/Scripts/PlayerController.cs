@@ -17,12 +17,12 @@ public class PlayerController : MonoBehaviour {
     {
         if (GameManager.Instance.CurrentMode == Mode.SideScroller)
         {
-            transform.FindChild("Medieval Sword").transform.gameObject.SetActive(false);
+            transform.FindChild("Sword").transform.gameObject.SetActive(false);
         }
         else if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button1))
         {
             PlayHitSound();
-            transform.FindChild("Medieval Sword").transform.gameObject.SetActive(true);
+            transform.FindChild("Sword").transform.gameObject.SetActive(true);
             attacking = true;
         }
     }
